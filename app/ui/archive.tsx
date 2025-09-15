@@ -11,11 +11,11 @@ export default function Categories({ archives }: { archives: any[] }) {
       <CardContent>
         <ul className="space-y-1">
           {
-            Object.keys(archives).map((year) => (
-              <li key={year}>
+            archives.map((archive) => (
+              <li key={archive.year}>
                 <Link href="#" className="flex justify-between hover:bg-gray-100 px-2 py-1 rounded">
-                  <div>{year}</div>
-                  <div>{archives[year].length}</div>
+                  <div>{archive.year}</div>
+                  <div>{archive.posts.length}</div>
                 </Link>
               </li>
             ))

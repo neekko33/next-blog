@@ -27,7 +27,7 @@ export default function Banner() {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild className={navigationMenuTriggerStyle}>
-                  <Link href="/">归档</Link>
+                  <Link href="/archives">归档</Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>

@@ -12,14 +12,14 @@ export default function Article({ article }: { article: any }) {
           {article.description}
         </p>
         <div className="flex flex-wrap gap-2 mb-6">
-          {article.tags.map((tag) => (
-            <span key={tag.id} className="text-xs bg-gray-100 text-gray-700 px-3 py-1 rounded font-medium">
-              #{tag.name}
+          {article.postsTags.map((postsTag) => (
+            <span key={postsTag.tag.id} className="text-xs bg-gray-100 text-gray-700 px-3 py-1 rounded font-medium">
+              #{postsTag.tag.name}
             </span>
           ))}
         </div>
         <div className="text-right">
-          <a href="#" className="hover:underline font-semibold">
+          <a href={`/posts/${article.id}`} className="hover:underline font-semibold">
             阅读更多 &rarr;
           </a>
         </div>
