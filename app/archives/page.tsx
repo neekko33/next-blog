@@ -3,9 +3,10 @@ import Pagination from "../ui/pagination"
 import ArchivesCard from "../ui/archive"
 import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
+import dayjs from "dayjs"
 
 export default async function Archives() {
-  const archives = await fetch("http://localhost:3001/api/archives")
+  const archives = await fetch("http://localhost:3000/api/archives")
   const archivesJson = await archives.json()
 
   return (
@@ -16,12 +17,12 @@ export default async function Archives() {
             {
               archivesJson.map((archive) => (
                 <div key={archive.year} className="border-b border-gray-200 pb-6 last:border-0 last:pb-0 pt-6 first:pt-0">
-                  <h2 className="text-2xl font-bold mb-4">{archive.year}</h2>
+                  <h2 id={archive.year} className="text-2xl font-bold mb-4">{archive.year}</h2>
                   <div className="space-y-4">
                     {
                       archive.posts.map((post) => (
                         <div key={post.id}>
-                          <p className="text-sm text-gray-500 mb-1">{new Date(post.created_at).toLocaleDateString()}</p>
+                          <p className="text-sm text-gray-500 mb-1">{dayjs(post.created_at).format("YYYY-MM-DD")}</p>
                           <Link href={`/posts/${post.id}`} className="text-lg mb-2 hover:underline">{post.title}</Link>
                         </div>
                       ))

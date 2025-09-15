@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card"
+import dayjs from "dayjs"
 
 export default function Article({ article }: { article: any }) {
   return (
@@ -7,14 +8,14 @@ export default function Article({ article }: { article: any }) {
         <h2 className="font-bold mb-3 text-2xl text-gray-900 leading-tight">
           {article.title}
         </h2>
-        <h3 className="text-gray-500 mb-4 text-sm">{article.created_at}</h3>
+        <h3 className="text-gray-500 mb-4 text-sm">{dayjs(article.created_at).format("YYYY-MM-DD")}</h3>
         <p className="mb-6 text-gray-700 leading-relaxed">
           {article.description}
         </p>
         <div className="flex flex-wrap gap-2 mb-6">
-          {article.postsTags.map((postsTag) => (
-            <span key={postsTag.tag.id} className="text-xs bg-gray-100 text-gray-700 px-3 py-1 rounded font-medium">
-              #{postsTag.tag.name}
+          {article.tags.map((tag) => (
+            <span key={tag.id} className="text-xs bg-gray-100 text-gray-700 px-3 py-1 rounded font-medium">
+              #{tag.name}
             </span>
           ))}
         </div>

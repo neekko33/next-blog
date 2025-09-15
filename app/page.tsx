@@ -18,9 +18,9 @@ export default async function Home({ searchParams }: { searchParams: { page?: st
   if (tagId) params.set("tag", tagId);
 
   const [homeRes, archivesRes, postsRes] = await Promise.all([
-    fetch("http://localhost:3001/api/home"),
-    fetch("http://localhost:3001/api/archives"),
-    fetch(`http://localhost:3001/api/posts?${params.toString()}`),
+    fetch("http://localhost:3000/api/home"),
+    fetch("http://localhost:3000/api/archives"),
+    fetch(`http://localhost:3000/api/posts?${params.toString()}`),
   ]);
 
   const [homeJson, archivesJson, postsJson] = await Promise.all([

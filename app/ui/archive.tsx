@@ -13,7 +13,7 @@ export default function Categories({ archives }: { archives: any[] }) {
           {
             archives.map((archive) => (
               <li key={archive.year}>
-                <Link href="#" className="flex justify-between hover:bg-gray-100 px-2 py-1 rounded">
+                <Link href={`/archives#${archive.year}`} className="flex justify-between hover:bg-gray-100 px-2 py-1 rounded">
                   <div>{archive.year}</div>
                   <div>{archive.posts.length}</div>
                 </Link>

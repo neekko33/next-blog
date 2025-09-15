@@ -1,5 +1,5 @@
 export default async function Post({ params }: { params: { slug: string } }) {
-  const post = await fetch(`http://localhost:3001/api/posts/${params.slug}`);
+  const post = await fetch(`http://localhost:3000/api/posts/${params.slug}`);
   const postJson = await post.json();
 
   return (
