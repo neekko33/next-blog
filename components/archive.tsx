@@ -1,5 +1,4 @@
 import { Card, CardTitle, CardContent, CardHeader } from "@/components/ui/card"
-import { Key } from "lucide-react";
 import Link from "next/link";
 
 export default function Categories({ archives }: { archives: any[] }) {

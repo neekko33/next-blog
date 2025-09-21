@@ -3,8 +3,6 @@ import {
   NavigationMenuList,
   NavigationMenuItem,
   NavigationMenuLink,
-  NavigationMenuContent,
-  NavigationMenuTrigger,
   navigationMenuTriggerStyle
 } from "@/components/ui/navigation-menu"
 import { Input } from "@/components/ui/input"

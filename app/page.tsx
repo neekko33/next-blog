@@ -1,10 +1,10 @@
 import Image from "next/image";
-import Author from "./ui/author";
-import Categories from "./ui/categories";
-import Tags from "./ui/tags";
-import Archive from "./ui/archive";
-import Article from "./ui/article";
-import Pagination from "./ui/pagination";
+import Author from "../components/author";
+import Categories from "../components/categories";
+import Tags from "../components/tags";
+import Archive from "../components/archive";
+import Article from "../components/article";
+import Pagination from "../components/pagination";
 import { Card } from "@/components/ui/card";
 
 export default async function Home({ searchParams }: { searchParams: { page?: string } }) {
