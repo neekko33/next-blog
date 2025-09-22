@@ -1,9 +1,15 @@
+'use server'
+
 import { db } from '@/lib/db/db'
 import { postsTable, postsTagsTable } from '@/lib/db/schema'
 import { desc, and, exists, eq } from 'drizzle-orm'
 import { Post } from '@/types/types'
 
-export async function getPostsCount(category: string = '', tag: string = '') {
+export async function getPostsCount() {
+  return db.$count(postsTable)
+}
+
+export async function getTotal(category: string = '', tag: string = '') {
   const total = await db.$count(
     postsTable,
     and(
@@ -27,8 +33,7 @@ export async function getPostsCount(category: string = '', tag: string = '') {
   return total
 }
 
-export async function getAllPosts(pageNum: number, category: string = '', tag: string = '') {
-  const sizeNum = 10
+export async function getAllPosts(pageNum: number, pageSize: number, category: string = '', tag: string = '') {
   const posts = await db.query.postsTable.findMany({
     where: (postsTable, { exists, and, eq }) =>
       and(
@@ -55,8 +60,8 @@ export async function getAllPosts(pageNum: number, category: string = '', tag: s
       },
     },
     orderBy: [desc(postsTable.created_at)],
-    limit: sizeNum,
-    offset: (pageNum - 1) * sizeNum,
+    limit: pageSize,
+    offset: (pageNum - 1) * pageSize,
   })
 
   const postsFormatted: Post[] = posts.map(post => ({

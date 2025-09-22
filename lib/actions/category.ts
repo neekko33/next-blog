@@ -1,6 +1,7 @@
+'use server'
+
 import { Category } from "@/types/types"
 import { db } from "@/lib/db/db"
-import { categoriesTable } from "@/lib/db/schema"
 
 export async function getAllCategories() {
   const categories: (Category & { posts: { id: number }[] })[] = await db.query.categoriesTable.findMany({

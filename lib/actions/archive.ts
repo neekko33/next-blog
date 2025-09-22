@@ -1,3 +1,4 @@
+'use server'
 import { db } from '@/lib/db/db'
 import { postsTable, postsTagsTable, tagsTable } from '@/lib/db/schema'
 import { eq, desc } from 'drizzle-orm'

@@ -1,3 +1,4 @@
+'use server'
 import { db } from "@/lib/db/db"
 import { tagsTable } from "@/lib/db/schema"
 import { Tag } from "@/types/types"

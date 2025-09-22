@@ -1,3 +1,4 @@
+'use server'
 import { db } from '@/lib/db/db'
 import { postsTable, usersTable } from '@/lib/db/schema'
 import { User } from '@/types/types'

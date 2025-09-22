@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card"
 import dayjs from "dayjs"
+import { Tag } from '@/types/types'
 
 export default function Article({ article }: { article: any }) {
   return (
@@ -13,7 +14,7 @@ export default function Article({ article }: { article: any }) {
           {article.description}
         </p>
         <div className="flex flex-wrap gap-2 mb-6">
-          {article.tags.map((tag) => (
+          {article.tags.map((tag: Tag) => (
             <span key={tag.id} className="text-xs bg-gray-100 text-gray-700 px-3 py-1 rounded font-medium">
               #{tag.name}
             </span>
