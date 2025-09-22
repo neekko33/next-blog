@@ -14,8 +14,9 @@ export default async function Home({
 }: {
   searchParams: Promise<{ tag?: string, category?: string }>
 }) {
-  const categoryId = searchParams.category || ''
-  const tagId = searchParams.tag || ''
+  const params = await searchParams
+  const categoryId = params.category || ''
+  const tagId = params.tag || ''
 
   const [categories, tags, archives, user, postsCount] = await Promise.all([
     getAllCategories(),
