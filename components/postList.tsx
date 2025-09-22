@@ -51,7 +51,7 @@ export default function PostList({ categories, tags }: { categories: Category[],
             </span>
           </div>
           <div className='text-gray-600'>
-            共<span className='mx-1'>10</span>篇
+            共<span className='mx-1'>{total}</span>篇
           </div>
         </div>
       )}

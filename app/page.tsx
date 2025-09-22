@@ -12,7 +12,7 @@ import { getPostsCount } from '@/lib/actions/post'
 export default async function Home({
   searchParams,
 }: {
-  searchParams: { tag?: string, category?: string }
+  searchParams: Promise<{ tag?: string, category?: string }>
 }) {
   const categoryId = searchParams.category || ''
   const tagId = searchParams.tag || ''
