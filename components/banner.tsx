@@ -10,7 +10,7 @@ import Link from "next/link";
 
 export default function Banner() {
   return (
-    <div className="w-full bg-white border-b shadow-sm mb-8 h-16 px-12">
+    <div className="w-full bg-white border-b shadow-sm mb-8 h-16 px-12 fixed z-10">
       <div className="h-full max-w-7xl flex items-center justify-between mx-auto">
         <div className="flex items-center">
           <div className="flex items-center mr-4">

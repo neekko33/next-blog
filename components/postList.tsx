@@ -6,7 +6,13 @@ import { useState, useEffect } from 'react'
 import { getAllPosts, getTotal } from '@/lib/actions/post'
 import { useSearchParams } from 'next/navigation'
 
-export default function PostList({ categories, tags }: { categories: Category[], tags: Tag[] }) {
+export default function PostList({
+  categories,
+  tags,
+}: {
+  categories: Category[]
+  tags: Tag[]
+}) {
   const [page, setPage] = useState(1)
   const [total, setTotal] = useState(0)
   const [posts, setPosts] = useState<Post[]>([])
@@ -55,11 +61,9 @@ export default function PostList({ categories, tags }: { categories: Category[],
           </div>
         </div>
       )}
-      {
-        posts.map((post: Post) => (
-          <Article article={post} key={post.id} />
-        ))
-      }
+      {posts.map((post: Post) => (
+        <Article article={post} key={post.id} />
+      ))}
       <Pagination
         total={total}
         page={page}

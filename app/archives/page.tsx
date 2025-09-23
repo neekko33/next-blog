@@ -1,21 +1,18 @@
-import Article from "../../components/article"
-import Pagination from "../../components/pagination"
-import ArchivesCard from "../../components/archive"
 import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
 import dayjs from "dayjs"
+import { getArchives } from "@/lib/actions/archive"
+import Archive from '@/components/archive'
 
 export default async function Archives() {
-  const archives = await fetch("http://localhost:3000/api/archives")
-  const archivesJson = await archives.json()
-
+  const archives = await getArchives()
   return (
-    <main className="flex w-3xl mx-auto gap-8">
+    <main className="flex w-full mx-auto gap-8">
       <div className="flex-1">
         <Card>
           <CardContent>
             {
-              archivesJson.map((archive) => (
+              archives.map((archive) => (
                 <div key={archive.year} className="border-b border-gray-200 pb-6 last:border-0 last:pb-0 pt-6 first:pt-0">
                   <h2 id={archive.year} className="text-2xl font-bold mb-4">{archive.year}</h2>
                   <div className="space-y-4">
@@ -33,6 +30,9 @@ export default async function Archives() {
             }
           </CardContent>
         </Card>
+      </div>
+      <div className="w-[350px] space-y-4">
+        <Archive archives={archives} />
       </div>
     </main>
   )

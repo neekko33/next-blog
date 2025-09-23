@@ -2,8 +2,10 @@ export type Post = {
   id: number
   title: string
   description: string
+  content?: string
   created_at: Date
   tags: Tag[]
+  category?: Category
 }
 
 export type Tag = {
