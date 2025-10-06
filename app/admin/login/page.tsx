@@ -2,14 +2,11 @@
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { useState } from 'react'
+import { signIn } from '@/lib/actions/auth'
+import { useActionState } from 'react'
+
 export default function LoginPage() {
-  const email = useState('')
-  const password = useState('')
-  
-  const handleLogin = () => {
-    // TODO: Login logic here
-  }
+  const [state, action, pending] = useActionState(signIn, undefined)
   return (
     <>
       <div className='w-screen h-screen flex'>
@@ -17,7 +14,7 @@ export default function LoginPage() {
           <div className='w-96 p-8 bg-white rounded-xl shadow'>
             <h2 className='text-2xl font-bold mb-6'>Admin Login</h2>
             <p className='text-gray-500'>Enter your Email and Password below</p>
-            <form className='mt-4 space-y-4'>
+            <form className='mt-4 space-y-4' action={signIn}>
               <div className='flex flex-col gap-6'>
                 <div className='grid gap-2'>
                   <Label htmlFor='email'>Email</Label>
@@ -27,6 +24,11 @@ export default function LoginPage() {
                     placeholder='m@example.com'
                     required
                   />
+                  {state?.errors?.email && (
+                    <p className='text-sm text-red-600 mt-1'>
+                      {state.errors.email}
+                    </p>
+                  )}
                 </div>
                 <div className='grid gap-2'>
                   <div className='flex items-center'>
@@ -39,10 +41,17 @@ export default function LoginPage() {
                     </a>
                   </div>
                   <Input id='password' type='password' required />
+                  {state?.errors?.password && (
+                    <p className='text-sm text-red-600 mt-1'>
+                      {state.errors.password}
+                    </p>
+                  )}
                 </div>
               </div>
+              <Button type='submit' className='w-full cursor-pointer mt-6'>
+                Sign In
+              </Button>
             </form>
-            <Button className='w-full cursor-pointer mt-6'>Sign In</Button>
           </div>
         </div>
       </div>
