@@ -9,10 +9,7 @@ import { redirect } from 'next/navigation'
 
 const SignInFormSchema = z.object({
   email: z.email({ message: 'Please enter a valid email address' }).trim(),
-  password: z
-    .string()
-    .min(6, { message: 'Password must be at least 6 characters' })
-    .trim(),
+  password: z.string().min(6, { message: 'Password must be at least 6 characters' }).trim(),
 })
 
 type FormState =
