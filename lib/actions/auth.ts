@@ -8,22 +8,24 @@ import { createSession, deleteSession } from '../session'
 import { redirect } from 'next/navigation'
 
 const SignInFormSchema = z.object({
-  email: z.string().email({ message: 'Please enter a valid email address' }).trim(),
-  password: z.string().min(6, { message: 'Password must be at least 6 characters' }).trim(),
+  email: z.email({ message: 'Please enter a valid email address' }).trim(),
+  password: z
+    .string()
+    .min(6, { message: 'Password must be at least 6 characters' })
+    .trim(),
 })
 
 type FormState =
   | {
-    errors: {
-      email?: string[]
-      password?: string[]
+      errors: {
+        email?: string[]
+        password?: string[]
+      }
+      message?: string
     }
-    message?: string
-  }
   | undefined
 
-export async function signIn( formData: FormData) {
-  console.log(formData)
+export async function signIn(formData: FormData) {
   const validatedFields = SignInFormSchema.safeParse({
     email: formData.get('email'),
     password: formData.get('password'),
