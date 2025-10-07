@@ -11,5 +11,13 @@ export default function BlogLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  return <div className='max-w-7xl mx-auto pb-8 pt-24'>{children}</div>
+  return (
+    <>
+      <Banner />
+      <main className='container mx-auto px-4 py-8 min-h-screen pt-24'>
+        {children}
+      </main>
+      <Footer />
+    </>
+  )
 }

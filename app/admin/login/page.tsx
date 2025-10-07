@@ -21,6 +21,7 @@ export default function LoginPage() {
                   <Input
                     id='email'
                     type='email'
+                    name='email'
                     placeholder='m@example.com'
                     required
                   />
@@ -40,7 +41,7 @@ export default function LoginPage() {
                       Forgot your password?
                     </a>
                   </div>
-                  <Input id='password' type='password' required />
+                  <Input id='password' type='password' name='password' required />
                   {state?.errors?.password && (
                     <p className='text-sm text-red-600 mt-1'>
                       {state.errors.password}

@@ -1,27 +1,29 @@
+'use server'
 import { z } from 'zod'
 import bcrypt from 'bcryptjs'
 import { db } from '../db/db'
 import { usersTable } from '../db/schema'
 import { eq } from 'drizzle-orm'
 import { createSession, deleteSession } from '../session'
-import { redirect } from 'next/dist/server/api-utils'
+import { redirect } from 'next/navigation'
 
 const SignInFormSchema = z.object({
   email: z.string().email({ message: 'Please enter a valid email address' }).trim(),
   password: z.string().min(6, { message: 'Password must be at least 6 characters' }).trim(),
 })
 
-type FormState = 
+type FormState =
   | {
-      errors: { 
-        email?: string[]
-        password?: string[]
-      }
-      message?: string
+    errors: {
+      email?: string[]
+      password?: string[]
     }
+    message?: string
+  }
   | undefined
 
-export async function signIn(state: FormState, formData: FormData) {
+export async function signIn( formData: FormData) {
+  console.log(formData)
   const validatedFields = SignInFormSchema.safeParse({
     email: formData.get('email'),
     password: formData.get('password'),
@@ -33,7 +35,7 @@ export async function signIn(state: FormState, formData: FormData) {
 
   const { email, password } = validatedFields.data
 
-  const data = await db.findFirst(usersTable, {
+  const data = await db.query.usersTable.findFirst({
     where: eq(usersTable.email, email),
   })
 
@@ -55,7 +57,7 @@ export async function signIn(state: FormState, formData: FormData) {
     }
   }
 
-  await createSession(data.id)
+  await createSession(data.id.toString())
   redirect('/admin/posts')
 }
 
