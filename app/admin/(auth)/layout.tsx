@@ -1,3 +1,4 @@
+import Banner from '@/components/layouts/banner'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -10,8 +11,10 @@ export default function AdminLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  return <div>
-    <h1>Admin Layout</h1>
-    {children}
-  </div>
+  return (
+    <>
+      <Banner type="admin" />
+      <main className="container mx-auto px-12 py-8 pt-24 min-h-screen">{children}</main>
+    </>
+  )
 }

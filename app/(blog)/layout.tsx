@@ -14,9 +14,7 @@ export default function BlogLayout({
   return (
     <>
       <Banner />
-      <main className='container mx-auto px-4 py-8 min-h-screen pt-24'>
-        {children}
-      </main>
+      <main className="container mx-auto px-4 py-8 min-h-screen pt-24">{children}</main>
       <Footer />
     </>
   )

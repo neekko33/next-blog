@@ -58,6 +58,7 @@ export async function getAllPosts(
         category ? eq(postsTable.category_id, Number(category)) : undefined
       ),
     with: {
+      category: true,
       postsTags: {
         with: {
           tag: true,
@@ -74,6 +75,7 @@ export async function getAllPosts(
     title: post.title,
     description: post.description,
     created_at: post.created_at,
+    category: post.category.name,
     tags: post.postsTags.map(pt => pt.tag),
   }))
 
